@@ -1,0 +1,203 @@
+/* Import Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global root styles */
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 16px;
+  /* Base font size for better scalability */
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #1f1f1f;
+  /* Slightly darker for better contrast */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  /* Prevent iOS text size adjustment */
+}
+
+/* Enhanced link styles */
+a {
+  font-weight: 500;
+  color: #4f46e5;
+  /* Softer indigo for better readability */
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+a:hover {
+  color: #6366f1;
+  /* Lighter indigo for hover */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  /* Better spacing for underlines */
+}
+
+/* Body styles for centered, responsive layout */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: inherit;
+}
+
+/* Headings */
+h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  /* Responsive font size */
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  font-weight: 700;
+  /* Bolder for emphasis */
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.3;
+  margin: 0 0 0.75rem;
+}
+
+/* Enhanced button styles */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  /* Slightly larger for better touch targets */
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #171717;
+  /* Darker button for depth */
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  /* Smooth transitions for all properties */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #4f46e5;
+  /* Indigo on hover */
+  border-color: #4f46e5;
+  transform: translateY(-1px);
+  /* Subtle lift effect */
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.3);
+  /* Focus ring */
+}
+
+button:disabled {
+  background-color: #4b5563;
+  /* Gray for disabled state */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Custom component classes with Tailwind */
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    @apply shadow-lg transform scale-105;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2;
+  }
+}
+
+/* Light theme adjustments */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #1f2937;
+    /* Darker text for better contrast */
+    background-color: #f3f4f6;
+    /* Light gray background */
+  }
+
+  a {
+    color: #4f46e5;
+  }
+
+  a:hover {
+    color: #6366f1;
+  }
+
+  button {
+    background-color: #ffffff;
+    color: #1f2937;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  button:hover {
+    background-color: #f3f4f6;
+    border-color: #4f46e5;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+
+  button,
+  a,
+  .card {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-shadow;
+  }
+
+  .calendar-time-slot {
+    @apply text-xs font-medium rounded-md px-2 py-1.5 transition-colors;
+  }
+
+  .calendar-time-slot:focus-visible {
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-1;
+  }
+}
